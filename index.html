@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briar Woods Model United Nations</title>
+<meta name="description" content="Briar Woods High School Model United Nations — Ashburn, Virginia. Diplomacy, debate, and delegation for Falcons.">
+<style>
+/* =========================================================================
+   BRIAR WOODS MODEL UNITED NATIONS — stylesheet
+   Refined editorial design in the school's real colors (navy + orange).
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500;1,6..72,600&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --navy-deep:#081527;
+  --navy:#0E2440;
+  --navy-mid:#173355;
+  --orange:#F2701F;
+  --orange-light:#FF9752;
+  --orange-dark:#D65D12;
+  --paper:#F7F5F0;
+  --mist:#EFF3F8;
+  --white:#FFFFFF;
+  --ink:#12203A;
+  --ink-soft:#5A6478;
+  --line:#E4E1D8;
+  --line-mist:#DCE3EC;
+  --line-navy:rgba(255,255,255,.14);
+  --shadow-sm:0 2px 12px rgba(8,21,39,.07);
+  --shadow-md:0 16px 36px rgba(8,21,39,.14);
+  --shadow-lg:0 32px 64px rgba(8,21,39,.24);
+  --radius:14px;
+  --radius-sm:9px;
+  --font-serif:'Newsreader', Georgia, serif;
+  --font-sans:'Manrope', system-ui, -apple-system, sans-serif;
+  --ease:cubic-bezier(.22,.9,.32,1);
+  --maxw:1180px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-sans);
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{ font-family:var(--font-serif); color:var(--navy); margin:0 0 .48em; line-height:1.14; font-weight:600; letter-spacing:-.01em; }
+h1{ font-size:clamp(2.5rem,5.2vw,3.9rem); }
+h2{ font-size:clamp(1.7rem,3vw,2.35rem); }
+h3{ font-size:1.22rem; }
+p{ margin:0 0 1em; color:var(--ink-soft); }
+a{ color:inherit; text-decoration:none; }
+img{ max-width:100%; display:block; }
+ul{ margin:0; padding:0; list-style:none; }
+em{ font-style:italic; color:var(--orange); }
+
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 30px; }
+.center{ text-align:center; }
+.mt-8{margin-top:8px;} .mt-12{margin-top:12px;} .mt-16{margin-top:16px;}
+.mt-24{margin-top:24px;} .mt-32{margin-top:32px;} .mt-48{margin-top:48px;}
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--orange-dark);
+}
+.eyebrow::before{ content:''; width:18px; height:2px; background:var(--orange); border-radius:2px; }
+.eyebrow.on-dark{ color:var(--orange-light); }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+}
+
+/* ============================= BUTTONS ================================= */
+.btn{
+  display:inline-flex; align-items:center; gap:9px; font-weight:700; font-size:.95rem;
+  padding:14px 26px; border-radius:var(--radius-sm); border:1.5px solid transparent; cursor:pointer;
+  transition:transform .28s var(--ease), box-shadow .28s var(--ease), background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+}
+.btn svg{ width:16px; height:16px; transition:transform .25s var(--ease); }
+.btn:hover svg{ transform:translateX(3px); }
+.btn:focus-visible{ outline:2.5px solid var(--orange); outline-offset:3px; }
+
+.btn-primary{ background:var(--orange); color:#fff; box-shadow:0 10px 24px rgba(242,112,31,.28); }
+.btn-primary:hover{ background:var(--orange-dark); transform:translateY(-3px); box-shadow:0 18px 34px rgba(242,112,31,.36); }
+
+.btn-ghost-dark{ background:transparent; border-color:rgba(255,255,255,.4); color:#fff; }
+.btn-ghost-dark:hover{ background:rgba(255,255,255,.1); border-color:#fff; transform:translateY(-3px); }
+
+.btn-ghost-light{ background:transparent; border-color:var(--navy); color:var(--navy); }
+.btn-ghost-light:hover{ background:var(--navy); color:#fff; transform:translateY(-3px); }
+
+.btn-navy{ background:var(--navy); color:#fff; box-shadow:var(--shadow-sm); }
+.btn-navy:hover{ background:var(--navy-deep); transform:translateY(-3px); box-shadow:var(--shadow-md); }
+
+/* ============================== HEADER ================================= */
+.site-header{
+  position:sticky; top:0; z-index:100; background:rgba(247,245,240,.86);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent; transition:border-color .3s ease, box-shadow .3s ease;
+}
+.site-header.is-scrolled{ border-bottom-color:var(--line); box-shadow:0 4px 20px rgba(8,21,39,.06); }
+.nav{ max-width:var(--maxw); margin:0 auto; padding:15px 30px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.brand{ display:flex; align-items:center; gap:11px; }
+.brand-mark{ width:36px; height:36px; flex-shrink:0; transition:transform .4s var(--ease); }
+.brand:hover .brand-mark{ transform:rotate(-6deg); }
+.brand-text{ display:flex; flex-direction:column; line-height:1.2; }
+.brand-text strong{ font-family:var(--font-serif); font-size:1.08rem; color:var(--navy); font-weight:600; }
+.brand-text span{ font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); }
+
+.nav-links{ display:flex; align-items:center; gap:28px; }
+.nav-links li a{ font-size:.92rem; font-weight:600; color:var(--navy); position:relative; padding:6px 0; transition:color .2s ease; }
+.nav-links li a::after{ content:''; position:absolute; left:0; bottom:0; height:2px; background:var(--orange); width:0; transition:width .3s var(--ease); border-radius:2px; }
+.nav-links li a:hover::after, .nav-links li a.active::after{ width:100%; }
+.nav-links li a.active{ color:var(--orange-dark); }
+.nav-cta{
+  background:var(--navy); color:#fff !important; padding:11px 20px; border-radius:999px; font-weight:700;
+  transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+.nav-cta::after{ display:none; }
+.nav-cta:hover{ background:var(--orange); transform:translateY(-2px); box-shadow:0 10px 22px rgba(242,112,31,.3); }
+
+.nav-toggle{ display:none; background:none; border:none; font-size:1.5rem; color:var(--navy); cursor:pointer; }
+
+@media (max-width:780px){
+  .nav-toggle{ display:block; }
+  .nav-links{
+    position:fixed; inset:64px 0 0 0; background:var(--paper); flex-direction:column; align-items:stretch;
+    padding:10px 30px 30px; transform:translateX(100%); transition:transform .4s var(--ease); overflow-y:auto;
+    border-top:1px solid var(--line);
+  }
+  .nav-links.is-open{ transform:translateX(0); }
+  .nav-links li{ border-bottom:1px solid var(--line); }
+  .nav-links li a{ display:block; padding:16px 2px; }
+  .nav-links li a.nav-cta{ display:block; text-align:center; margin:16px 0; }
+}
+
+/* ============================== HERO ==================================== */
+.hero{ background:var(--navy-deep); color:#fff; position:relative; overflow:hidden; padding:84px 0 0; }
+.hero-glow{
+  position:absolute; width:640px; height:640px; border-radius:50%; top:-220px; right:-140px;
+  background:radial-gradient(circle, rgba(242,112,31,.32), transparent 70%);
+  filter:blur(10px); animation:pulse-glow 9s ease-in-out infinite alternate; pointer-events:none;
+}
+.hero-glow.two{ top:auto; bottom:-260px; left:-180px; right:auto; width:520px; height:520px;
+  background:radial-gradient(circle, rgba(23,51,85,.9), transparent 70%); animation-delay:-4s; }
+@keyframes pulse-glow{ 0%{ transform:scale(1); opacity:.7; } 100%{ transform:scale(1.15); opacity:1; } }
+
+.hero-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center; position:relative; padding-bottom:70px; }
+.hero-copy{ opacity:0; transform:translateY(16px); animation:rise .8s var(--ease) forwards; }
+.hero-copy.d1{ animation-delay:.05s; } .hero-copy.d2{ animation-delay:.16s; }
+.hero-copy.d3{ animation-delay:.27s; } .hero-copy.d4{ animation-delay:.38s; }
+@keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+
+.hero h1{ color:#fff; }
+.hero-sub{ color:#B9C6D9; font-size:1.1rem; max-width:48ch; }
+.hero-actions{ display:flex; gap:14px; margin-top:8px; flex-wrap:wrap; }
+
+.meeting-card{
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:var(--radius);
+  padding:30px 30px 26px; backdrop-filter:blur(8px); box-shadow:var(--shadow-lg);
+  opacity:0; transform:translateY(16px) scale(.98); animation:rise-card .9s var(--ease) forwards .3s;
+}
+@keyframes rise-card{ to{ opacity:1; transform:translateY(0) scale(1); } }
+.meeting-card .eyebrow{ color:var(--orange-light); }
+.meeting-when{ font-family:var(--font-serif); font-size:1.7rem; color:#fff; margin:10px 0 2px; }
+.meeting-where{ color:#A9B9D1; font-size:.92rem; }
+.meeting-divider{ height:1px; background:rgba(255,255,255,.14); margin:22px 0; }
+.meeting-stats{ display:flex; justify-content:space-between; gap:10px; }
+.meeting-stats div{ text-align:left; }
+.meeting-stats strong{ display:block; font-family:var(--font-serif); font-size:1.5rem; color:#fff; }
+.meeting-stats span{ font-size:.74rem; color:#8FA1BC; text-transform:uppercase; letter-spacing:.04em; }
+
+/* ---------- stat strip ---------- */
+.stat-strip{ background:var(--navy); }
+.stat-row{ display:grid; grid-template-columns:repeat(4,1fr); }
+.stat-cell{ padding:34px 22px; text-align:center; position:relative; }
+.stat-cell + .stat-cell::before{ content:''; position:absolute; left:0; top:20%; bottom:20%; width:1px; background:rgba(255,255,255,.12); }
+.stat-num{ font-family:var(--font-serif); font-size:2.15rem; color:#fff; font-weight:600; }
+.stat-label{
+  display:block; margin-top:8px; font-size:.76rem; color:#93A5BE; text-transform:uppercase; letter-spacing:.06em;
+  position:relative; padding-bottom:10px;
+}
+.stat-label::after{
+  content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:0; height:2px; background:var(--orange);
+  transition:width .5s var(--ease) .1s; border-radius:2px;
+}
+.stat-cell.in-view .stat-label::after{ width:26px; }
+
+/* ============================== SECTIONS ================================ */
+.section{ padding:92px 0; }
+.section.tight{ padding:64px 0; }
+.section.on-navy{ background:var(--navy); color:#fff; }
+.section.on-mist{ background:var(--mist); }
+.section-head{ max-width:640px; }
+.section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+.section-head p{ font-size:1.03rem; }
+
+.page-hero{ background:var(--navy-deep); color:#fff; padding:60px 0 52px; position:relative; overflow:hidden; }
+.breadcrumb{ font-size:.85rem; color:#93A5BE; margin-bottom:14px; }
+.breadcrumb a{ color:#93A5BE; transition:color .2s ease; } .breadcrumb a:hover{ color:#fff; }
+.breadcrumb .sep{ margin:0 8px; } .breadcrumb .current{ color:var(--orange-light); }
+.page-hero h1{ color:#fff; }
+.page-hero p{ color:#B9C6D9; max-width:62ch; margin-top:12px; font-size:1.05rem; }
+
+/* ============================= PILLAR CARDS ============================= */
+.pillar-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+.pillar{
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+  padding:30px 26px; position:relative; overflow:hidden; transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s ease;
+}
+.pillar::before{ content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--orange); transform:scaleY(0); transform-origin:top; transition:transform .4s var(--ease); }
+.pillar:hover{ transform:translateY(-8px); box-shadow:var(--shadow-md); border-color:transparent; }
+.pillar:hover::before{ transform:scaleY(1); }
+.pillar-num{ font-family:var(--font-serif); font-size:.9rem; color:var(--line); font-weight:600; }
+.pillar h3{ margin:14px 0 8px; }
+.pillar p{ font-size:.94rem; margin:0; }
+
+/* ============================== CTA BANNER =============================== */
+.cta-banner{
+  background:linear-gradient(120deg, var(--navy) 0%, var(--navy-mid) 100%);
+  border-radius:var(--radius); padding:40px 44px; color:#fff; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:space-between; gap:26px; flex-wrap:wrap; box-shadow:var(--shadow-md);
+}
+.cta-banner::after{
+  content:''; position:absolute; width:340px; height:340px; border-radius:50%; right:-120px; top:-140px;
+  background:radial-gradient(circle, rgba(242,112,31,.28), transparent 70%);
+}
+.cta-banner h3{ color:#fff; margin-bottom:6px; position:relative; }
+.cta-banner p{ color:#c9d6e6; margin:0; position:relative; }
+.cta-banner .btn{ position:relative; }
+
+/* ============================== OFFICER CARDS ============================= */
+.officer-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+.officer-card{
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius); text-align:center;
+  padding:30px 22px 26px; transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.officer-card:hover{ transform:translateY(-8px); box-shadow:var(--shadow-md); }
+.officer-card.on-navy{ background:var(--navy-mid); border-color:var(--line-navy); }
+.avatar{
+  width:64px; height:64px; margin:0 auto 16px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-serif); font-weight:600; font-size:1.05rem; color:#fff;
+  background:linear-gradient(135deg, var(--navy) 0%, var(--orange) 145%);
+  transition:transform .35s var(--ease);
+}
+.officer-card:hover .avatar{ transform:scale(1.08) rotate(-4deg); }
+.officer-role{
+  display:inline-block; font-size:.75rem; font-weight:700; color:var(--orange-dark); text-transform:uppercase;
+  letter-spacing:.05em; margin:5px 0 10px;
+}
+.officer-card.on-navy .officer-role{ color:var(--orange-light); }
+.officer-card.on-navy h3{ color:#fff; }
+.officer-card.on-navy p{ color:#c3d0e2; }
+
+/* ============================== COMMITTEES ================================ */
+.committee-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.committee-card{
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:24px 24px 22px;
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.committee-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-md); }
+.committee-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:12px; }
+.committee-abbr{ display:block; font-family:var(--font-serif); font-weight:700; color:var(--orange-dark); font-size:.86rem; letter-spacing:.03em; }
+.committee-head h3{ margin:2px 0 0; font-size:1.06rem; }
+.level{ flex-shrink:0; font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em; padding:5px 11px; border-radius:999px; white-space:nowrap; }
+.level.beg{ background:#E6F5EC; color:#1C7A41; }
+.level.int{ background:#FFF1E0; color:#B3620A; }
+.level.adv{ background:#FDE7E7; color:#C0392B; }
+.committee-card p{ font-size:.9rem; margin:0; }
+
+/* ============================== TIMELINE ================================== */
+.timeline{ position:relative; padding-left:32px; }
+.timeline::before{ content:''; position:absolute; left:5px; top:6px; bottom:6px; width:2px; background:var(--line); }
+.tl-item{ position:relative; padding-bottom:36px; }
+.tl-item:last-child{ padding-bottom:0; }
+.tl-item::before{ content:''; position:absolute; left:-32px; top:3px; width:12px; height:12px; border-radius:50%; background:var(--orange); border:3px solid var(--paper); box-shadow:0 0 0 1.5px var(--orange); }
+.tl-year{ font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--orange-dark); }
+.tl-item h3{ margin:6px 0 6px; }
+.tl-item ul{ margin-top:10px; display:flex; flex-direction:column; gap:5px; }
+.tl-item li{ font-size:.9rem; color:var(--ink-soft); padding-left:16px; position:relative; }
+.tl-item li::before{ content:'\2013'; position:absolute; left:0; color:var(--orange); }
+
+/* ============================== AWARD ROWS ================================= */
+.award-row{
+  display:flex; align-items:center; gap:16px; padding:18px 20px; border:1px solid var(--line); border-radius:var(--radius-sm);
+  background:var(--white); transition:transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s ease;
+}
+.award-row:hover{ transform:translateX(4px); box-shadow:var(--shadow-sm); border-color:transparent; }
+.award-icon{
+  flex-shrink:0; width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  background:#FFF1E0; color:var(--orange-dark);
+}
+.award-icon svg{ width:20px; height:20px; }
+.award-row h4{ font-family:var(--font-serif); color:var(--navy); font-size:1.02rem; margin:0 0 2px; font-weight:600; }
+.award-row p{ margin:0; font-size:.88rem; }
+
+/* ============================== RESOURCES ================================= */
+.resource-row{
+  display:flex; justify-content:space-between; align-items:center; gap:20px; padding:22px 0; border-top:1px solid var(--line);
+}
+.resource-row:last-child{ border-bottom:1px solid var(--line); }
+.resource-tags{ display:flex; gap:8px; margin-bottom:8px; }
+.resource-tag{
+  font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--orange-dark);
+  background:#FFF1E0; padding:4px 10px; border-radius:999px;
+}
+.resource-row h4{ font-family:var(--font-serif); color:var(--navy); font-size:1.04rem; margin:0 0 4px; font-weight:600; }
+.resource-row p{ margin:0; font-size:.9rem; }
+
+.glossary{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+.gloss-item{ background:var(--navy-mid); border-radius:var(--radius-sm); padding:24px 26px; transition:transform .3s var(--ease); }
+.gloss-item:hover{ transform:translateY(-4px); }
+.gloss-term{ font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--orange-light); font-weight:700; }
+.gloss-item h3{ color:#fff; margin:8px 0 6px; font-size:1.05rem; }
+.gloss-item p{ color:#c3d0e2; font-size:.88rem; margin:0; }
+
+/* Accordion */
+.accordion{ border-top:1px solid var(--line); }
+.accordion-item{ border-bottom:1px solid var(--line); }
+.accordion-btn{
+  width:100%; background:none; border:none; text-align:left; cursor:pointer; display:flex; justify-content:space-between;
+  align-items:center; gap:20px; padding:20px 2px; font-family:var(--font-serif); font-size:1.05rem; color:var(--navy);
+  transition:color .2s ease;
+}
+.accordion-btn:hover{ color:var(--orange-dark); }
+.accordion-btn .plus{ font-size:1.3rem; color:var(--orange); flex-shrink:0; transition:transform .35s var(--ease); font-family:var(--font-sans); }
+.accordion-item.is-open .plus{ transform:rotate(45deg); }
+.accordion-panel{ max-height:0; overflow:hidden; transition:max-height .4s var(--ease); }
+.accordion-panel-inner{ padding:0 2px 22px; font-size:.96rem; color:var(--ink-soft); max-width:70ch; }
+
+/* ============================== FORM / JOIN =============================== */
+.info-strip{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.info-card{
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:28px 26px;
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.info-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-md); }
+
+form{ display:grid; gap:20px; }
+.form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.field.full{ grid-column:1 / -1; }
+.field label{ display:block; font-size:.82rem; font-weight:700; color:var(--navy); margin-bottom:7px; }
+.field.on-dark label{ color:#B9C6D9; }
+.field input, .field select, .field textarea{
+  width:100%; font-family:var(--font-sans); font-size:.96rem; color:var(--ink); padding:12px 14px;
+  border-radius:var(--radius-sm); border:1.5px solid var(--line); background:var(--white);
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.field.on-dark input, .field.on-dark select, .field.on-dark textarea{
+  background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.22); color:#fff;
+}
+.field select option{ color:#000; }
+.field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--orange); box-shadow:0 0 0 4px rgba(242,112,31,.15); }
+.field textarea{ resize:vertical; min-height:110px; }
+
+.form-success{
+  display:none; align-items:center; gap:12px; background:rgba(46,164,101,.14); border:1px solid rgba(46,164,101,.4);
+  color:#bdeccf; padding:14px 18px; border-radius:var(--radius-sm); font-size:.92rem;
+}
+.form-success.is-visible{ display:flex; animation:rise .5s var(--ease); }
+.form-success svg{ width:20px; height:20px; color:#4ADE80; flex-shrink:0; }
+
+/* ============================== FOOTER ===================================== */
+.site-footer{ background:var(--navy-deep); color:#93A5BE; padding:64px 0 26px; }
+.footer-grid{ display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:36px; }
+.footer-brand{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.footer-brand strong{ font-family:var(--font-serif); color:#fff; font-size:1.05rem; }
+.site-footer h4{ color:#fff; font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; margin-bottom:16px; }
+.site-footer ul li{ margin-bottom:10px; font-size:.9rem; }
+.site-footer ul li a{ color:#93A5BE; transition:color .2s ease; } .site-footer ul li a:hover{ color:var(--orange-light); }
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1); margin-top:44px; padding-top:22px; display:flex;
+  justify-content:space-between; flex-wrap:wrap; gap:8px; font-size:.8rem; color:#5E7290;
+}
+
+/* ============================== REVEAL ====================================== */
+.reveal{ opacity:0; transform:translateY(20px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in-view{ opacity:1; transform:translateY(0); }
+
+/* ============================== RESPONSIVE =================================== */
+@media (max-width:980px){
+  .hero-grid{ grid-template-columns:1fr; }
+  .pillar-grid, .officer-grid{ grid-template-columns:repeat(2,1fr); }
+  .committee-grid{ grid-template-columns:repeat(2,1fr); }
+  .stat-row{ grid-template-columns:repeat(2,1fr); row-gap:24px; }
+  .stat-cell:nth-child(3)::before{ display:none; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+  .glossary{ grid-template-columns:1fr; }
+  .info-strip{ grid-template-columns:1fr; }
+}
+@media (max-width:680px){
+  .pillar-grid, .officer-grid, .committee-grid{ grid-template-columns:1fr; }
+  .form-grid{ grid-template-columns:1fr; }
+  .cta-banner{ flex-direction:column; align-items:flex-start; }
+  .footer-grid{ grid-template-columns:1fr; }
+  .stat-row{ grid-template-columns:1fr 1fr; }
+}
+
+</style>
+</head>
+<body>
+<header class="site-header">
+<nav class="nav">
+<a href="index.html" class="brand">
+<svg class="brand-mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Briar Woods MUN emblem">
+<polygon points="22,3 38.45,12.5 38.45,31.5 22,41 5.55,31.5 5.55,12.5" fill="#0E2440" stroke="#F2701F" stroke-width="1.4"/>
+<path d="M22 14 L34.5 31 L25.5 31 L22 25 L18.5 31 L9.5 31 Z" fill="#F7F5F0"/>
+<path d="M22 8.5 L25.8 15 L18.2 15 Z" fill="#F2701F"/>
+</svg>
+<span class="brand-text"><strong>Briar Woods MUN</strong><span>Falcons &middot; Ashburn, VA</span></span>
+</a>
+<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="committees.html">Committees</a></li>
+<li><a href="officers.html">Officers</a></li>
+<li><a href="awards.html">Awards</a></li>
+<li><a href="resources.html">Resources</a></li>
+<li><a href="join.html" class="nav-cta">Join the Team</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-glow"></div>
+<div class="hero-glow two"></div>
+<div class="wrap hero-grid">
+<div>
+<span class="eyebrow on-dark hero-copy d1">Briar Woods High School &middot; Falcons</span>
+<h1 class="hero-copy d2">Where Falcons learn to <em>lead the room.</em></h1>
+<p class="hero-sub hero-copy d3">Briar Woods Model United Nations trains delegates to research global issues, negotiate under pressure, and write policy that holds up &mdash; one committee session at a time.</p>
+<div class="hero-actions hero-copy d4">
+<a href="join.html" class="btn btn-primary">Join the Team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a href="about.html" class="btn btn-ghost-dark">What is MUN?</a>
+</div>
+</div>
+<div class="meeting-card">
+<span class="eyebrow">Next Meeting</span>
+<div class="meeting-when" id="next-meeting">Loading&hellip;</div>
+<div class="meeting-where">Room 214 &middot; Briar Woods High School</div>
+<div class="meeting-divider"></div>
+<div class="meeting-stats">
+<div><strong>40+</strong><span>Delegates</span></div>
+<div><strong>12+</strong><span>Conferences</span></div>
+<div><strong>25+</strong><span>Gavels</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="stat-strip">
+<div class="wrap">
+<div class="stat-row">
+<div class="stat-cell"><span class="stat-num" data-count="40" data-suffix="+">0</span><span class="stat-label">Active Delegates</span></div>
+<div class="stat-cell"><span class="stat-num" data-count="12" data-suffix="+">0</span><span class="stat-label">Conferences a Year</span></div>
+<div class="stat-cell"><span class="stat-num" data-count="25" data-suffix="+">0</span><span class="stat-label">Gavels &amp; Awards</span></div>
+<div class="stat-cell"><span class="stat-num" data-count="6" data-suffix="th">0</span><span class="stat-label">Year as a Program</span></div>
+</div>
+</div>
+</div>
+
+<section class="section">
+<div class="wrap">
+<div class="section-head center">
+<span class="eyebrow">About Model UN</span>
+<h2 class="mt-8">Diplomacy is a skill. We build it in committee.</h2>
+<p class="mt-16">Model United Nations puts students in the role of a country delegate, tasked with researching real global issues, negotiating with rival blocs, and drafting resolutions under formal parliamentary procedure &mdash; all before the gavel falls.</p>
+</div>
+<div class="pillar-grid mt-48">
+<div class="pillar">
+<span class="pillar-num">01</span>
+<h3>Leadership</h3>
+<p>Delegates learn to command a room, build coalitions, and steer committee toward resolution.</p>
+</div>
+<div class="pillar">
+<span class="pillar-num">02</span>
+<h3>Diplomacy</h3>
+<p>Negotiation without hostility &mdash; managing competing interests to reach real consensus.</p>
+</div>
+<div class="pillar">
+<span class="pillar-num">03</span>
+<h3>Public Policy</h3>
+<p>Delegates study real policy positions and translate them into working resolutions.</p>
+</div>
+<div class="pillar">
+<span class="pillar-num">04</span>
+<h3>Research</h3>
+<p>Every position paper starts with deep research into a country's history and stance.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section tight on-mist">
+<div class="wrap">
+<div class="cta-banner">
+<div>
+<h3>The Falcon Invitational is coming up.</h3>
+<p>Registration and committee details are posted &mdash; see what's on the docket this season.</p>
+</div>
+<a href="committees.html" class="btn btn-primary">View Committees <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="section-head center">
+<span class="eyebrow">Leadership Team</span>
+<h2 class="mt-8">Meet the Secretariat</h2>
+<p class="mt-16">Officers run weekly meetings, coach new delegates, and organize the club's conference travel.</p>
+</div>
+<div class="officer-grid mt-48">
+<div class="officer-card">
+<div class="avatar">A.M.</div>
+<h3>Full Name</h3>
+<span class="officer-role">Secretary-General</span>
+<p>Leads the Secretariat and sets the club's conference calendar.</p>
+</div>
+<div class="officer-card">
+<div class="avatar">V.P.</div>
+<h3>Full Name</h3>
+<span class="officer-role">Under Secretary-General</span>
+<p>Oversees delegate training and new-member onboarding.</p>
+</div>
+<div class="officer-card">
+<div class="avatar">C.S.</div>
+<h3>Full Name</h3>
+<span class="officer-role">Chief of Staff</span>
+<p>Handles registration, chaperones, and conference logistics.</p>
+</div>
+<div class="officer-card">
+<div class="avatar">D.G.</div>
+<h3>Full Name</h3>
+<span class="officer-role">Director-General</span>
+<p>Runs parliamentary procedure drills and mock committees.</p>
+</div>
+</div>
+<p class="center mt-32"><a href="officers.html" class="btn btn-ghost-light">Meet the Full Team</a></p>
+</div>
+</section>
+
+<footer class="site-footer">
+<div class="wrap">
+<div class="footer-grid">
+<div>
+<div class="footer-brand">
+<svg class="brand-mark" width="34" height="34" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+<polygon points="22,3 38.45,12.5 38.45,31.5 22,41 5.55,31.5 5.55,12.5" fill="#0E2440" stroke="#F2701F" stroke-width="1.4"/>
+<path d="M22 14 L34.5 31 L25.5 31 L22 25 L18.5 31 L9.5 31 Z" fill="#F7F5F0"/>
+<path d="M22 8.5 L25.8 15 L18.2 15 Z" fill="#F2701F"/>
+</svg>
+<strong>Briar Woods MUN</strong>
+</div>
+<p>The Model United Nations program at Briar Woods High School, Ashburn, Virginia.</p>
+</div>
+<div>
+<h4>Explore</h4>
+<ul>
+<li><a href="about.html">About the Club</a></li>
+<li><a href="committees.html">Committees</a></li>
+<li><a href="officers.html">Officers</a></li>
+<li><a href="awards.html">Awards &amp; Conferences</a></li>
+</ul>
+</div>
+<div>
+<h4>Resources</h4>
+<ul>
+<li><a href="resources.html">Delegate Guides</a></li>
+<li><a href="resources.html#procedure">Rules of Procedure</a></li>
+<li><a href="resources.html#faq">New Delegate FAQ</a></li>
+<li><a href="join.html">How to Join</a></li>
+</ul>
+</div>
+<div>
+<h4>Contact</h4>
+<ul>
+<li>briarwoodsmun@example.com</li>
+<li>Room 214 &middot; Tuesdays, 3:15&ndash;4:30 PM</li>
+<li>22525 Belmont Ridge Rd, Ashburn, VA</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>&copy; 2026 Briar Woods Model United Nations. All Rights Reserved.</span>
+<span>Built by Falcons, for Falcons.</span>
+</div>
+</div>
+</footer>
+<script>
+/* =========================================================================
+   BRIAR WOODS MODEL UNITED NATIONS — site script
+   ========================================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---- sticky header shadow ---- */
+  const header = document.querySelector('.site-header');
+  if (header) {
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 10);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive:true });
+  }
+
+  /* ---- mobile nav ---- */
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.innerHTML = open ? '&times;' : '&#9776;';
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded','false');
+      navToggle.innerHTML = '&#9776;';
+    }));
+  }
+
+  /* ---- active nav link ---- */
+  const current = (location.pathname.split('/').pop() || 'index.html');
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    if (a.getAttribute('href') === current) a.classList.add('active');
+  });
+
+  /* ---- live "next meeting" calculator (meets Tuesdays, 3:15 PM) ---- */
+  const meetingEl = document.getElementById('next-meeting');
+  if (meetingEl) {
+    const now = new Date();
+    const target = new Date(now);
+    target.setHours(15, 15, 0, 0);
+    const MEETING_DAY = 2; // Tuesday
+    let daysUntil = (MEETING_DAY - now.getDay() + 7) % 7;
+    if (daysUntil === 0 && now > target) daysUntil = 7;
+    target.setDate(now.getDate() + daysUntil);
+    const label = daysUntil === 0 ? 'Today' : target.toLocaleDateString('en-US', { weekday:'long', month:'short', day:'numeric' });
+    meetingEl.textContent = `${label} \u00b7 3:15 PM`;
+  }
+
+  /* ---- animated counters ---- */
+  const counters = document.querySelectorAll('[data-count]');
+  if (counters.length && 'IntersectionObserver' in window) {
+    const run = (el) => {
+      const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      const suffix = el.getAttribute('data-suffix') || '';
+      const dur = 1300, start = performance.now();
+      const step = (now) => {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          run(e.target);
+          e.target.closest('.stat-cell')?.classList.add('in-view');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold:.5 });
+    counters.forEach(c => obs.observe(c));
+  }
+
+  /* ---- scroll reveal ---- */
+  const revealSel = '.pillar, .officer-card, .committee-card, .tl-item, .award-row, .info-card, .gloss-item, .resource-row, .cta-banner, .section-head';
+  const revealEls = document.querySelectorAll(revealSel);
+  if (revealEls.length && 'IntersectionObserver' in window) {
+    revealEls.forEach(el => el.classList.add('reveal'));
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('in-view'), (i % 5) * 80);
+          ro.unobserve(entry.target);
+        }
+      });
+    }, { threshold:.12 });
+    revealEls.forEach(el => ro.observe(el));
+  }
+
+  /* ---- accordion ---- */
+  document.querySelectorAll('.accordion-item').forEach(item => {
+    const btn = item.querySelector('.accordion-btn');
+    const panel = item.querySelector('.accordion-panel');
+    if (!btn || !panel) return;
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.accordion-item.is-open').forEach(other => {
+        if (other !== item) {
+          other.classList.remove('is-open');
+          other.querySelector('.accordion-panel').style.maxHeight = null;
+        }
+      });
+      item.classList.toggle('is-open', !isOpen);
+      panel.style.maxHeight = !isOpen ? panel.scrollHeight + 'px' : null;
+    });
+  });
+
+  /* ---- join form ---- */
+  const form = document.getElementById('join-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const success = document.getElementById('form-success');
+      if (success) success.classList.add('is-visible');
+      form.reset();
+    });
+  }
+
+});
+
+</script>
+</body>
+</html>
